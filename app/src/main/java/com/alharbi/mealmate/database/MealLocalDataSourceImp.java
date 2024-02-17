@@ -8,6 +8,8 @@ import com.alharbi.mealmate.model.Meal;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Flowable;
+
 public class MealLocalDataSourceImp implements MealLocalDataSource {
 
     private static MealLocalDataSourceImp instance;
@@ -35,7 +37,7 @@ public class MealLocalDataSourceImp implements MealLocalDataSource {
     }
 
     @Override
-    public LiveData<List<Meal>> getMeals() {
+    public Flowable<List<Meal>> getMeals() {
         return dao.getMeals();
     }
 }

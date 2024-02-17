@@ -8,6 +8,8 @@ import com.alharbi.mealmate.network.NetworkCallBack;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Flowable;
+
 public class MealRepositoryImp implements MealRepository {
 
 
@@ -32,17 +34,17 @@ public class MealRepositoryImp implements MealRepository {
 
     @Override
     public void insertMeal(Meal meal) {
-
+        localDataSource.insert(meal);
     }
 
     @Override
     public void deleteMeal(Meal meal) {
-
+        localDataSource.delete(meal);
     }
 
     @Override
-    public LiveData<List<Meal>> getLocalMeals() {
-        return null;
+    public Flowable<List<Meal>> getLocalMeals() {
+        return localDataSource.getMeals();
     }
 
     @Override

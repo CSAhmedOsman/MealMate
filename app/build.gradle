@@ -1,56 +1,94 @@
 plugins {
+    // Apply Android application plugin
     id 'com.android.application'
+    // Apply Safe Args plugin for navigation
+    id 'androidx.navigation.safeargs'
+    // Add the Google services Gradle plugin
+    id 'com.google.gms.google-services'
 }
 
 android {
+    // Set the application package name
     namespace 'com.alharbi.mealmate'
+    // Set the compile SDK version
     compileSdk 34
 
     defaultConfig {
+        // Set application ID, minimum SDK version, target SDK version, and versioning
         applicationId "com.alharbi.mealmate"
         minSdk 24
         targetSdk 34
         versionCode 1
         versionName "1.0"
-
+        // Specify the test runner
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            // Enable ProGuard to optimize the code in release builds
             minifyEnabled false
+            // Specify ProGuard rules
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
+        // Set Java compatibility options
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
-
+    // AndroidX support libraries
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // Testing dependencies
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    implementation 'com.google.code.gson:gson:2.10'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.github.bumptech.glide:glide:4.16.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-
-    implementation 'androidx.room:room-runtime:2.6.1'
-    annotationProcessor 'androidx.room:room-compiler:2.6.1'
-
+    // Android Architecture Components
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
-
     implementation 'androidx.navigation:navigation-fragment:2.7.7'
     implementation 'androidx.navigation:navigation-ui:2.7.7'
 
+    // Network communication libraries
+    implementation 'com.google.code.gson:gson:2.10'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // Image loading library
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    // Database persistence library
+    implementation 'androidx.room:room-runtime:2.6.1'
+    annotationProcessor 'androidx.room:room-compiler:2.6.1'
+
+    // Reactive programming libraries
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.8'
+    implementation 'com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0'
+    implementation 'androidx.room:room-rxjava3:2.6.1'
+
+    // Animation library
     implementation 'com.airbnb.android:lottie:6.3.0'
+
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:32.7.2')
+
+    // Facebook SDK
+    implementation 'com.facebook.android:facebook-android-sdk:16.3.0'
+
+    // Firebase Authentication and Analytics
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    // Google Play services library
+    implementation 'com.google.android.gms:play-services-auth:21.0.0'
 }

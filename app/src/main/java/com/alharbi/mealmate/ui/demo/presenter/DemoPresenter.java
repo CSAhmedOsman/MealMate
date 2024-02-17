@@ -19,7 +19,7 @@ public class DemoPresenter implements NetworkCallBack {
     }
 
     public void getData() {
-        repository.getRemoteData(this, Utils.SEARCH_MEAL_BY_NAME, "Arrabiata");
+        repository.getRemoteData(this, Utils.LIST_INGREDIENTS, "");
     }
 
     @Override

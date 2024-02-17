@@ -17,8 +17,14 @@ public class Meal implements Parcelable {
     @NonNull
     @SerializedName("idMeal")
     private String idMeal;
+    @SerializedName("idIngredient")
+    private String idIngredient;
     @SerializedName("strMeal")
     private String strMeal;
+    @SerializedName("strDescription")
+    private String strDescription;
+    @SerializedName("strType")
+    private String strType;
     @SerializedName("strDrinkAlternate")
     private String strDrinkAlternate;
     @SerializedName("strCategory")
@@ -33,6 +39,8 @@ public class Meal implements Parcelable {
     private String strTags;
     @SerializedName("strYoutube")
     private String strYoutube;
+    @SerializedName("strIngredient")
+    private String strIngredient;
     @SerializedName("strIngredient1")
     private String strIngredient1;
     @SerializedName("strIngredient2")
@@ -134,7 +142,10 @@ public class Meal implements Parcelable {
     @Ignore
     protected Meal(Parcel in) {
         this.idMeal = ((String) in.readValue((String.class.getClassLoader())));
+        this.idIngredient = ((String) in.readValue((String.class.getClassLoader())));
         this.strMeal = ((String) in.readValue((String.class.getClassLoader())));
+        this.strDescription = ((String) in.readValue((String.class.getClassLoader())));
+        this.strType = ((String) in.readValue((String.class.getClassLoader())));
         this.strDrinkAlternate = ((String) in.readValue((String.class.getClassLoader())));
         this.strCategory = ((String) in.readValue((String.class.getClassLoader())));
         this.strArea = ((String) in.readValue((String.class.getClassLoader())));
@@ -142,6 +153,7 @@ public class Meal implements Parcelable {
         this.strMealThumb = ((String) in.readValue((String.class.getClassLoader())));
         this.strTags = ((String) in.readValue((String.class.getClassLoader())));
         this.strYoutube = ((String) in.readValue((String.class.getClassLoader())));
+        this.strIngredient = ((String) in.readValue((String.class.getClassLoader())));
         this.strIngredient1 = ((String) in.readValue((String.class.getClassLoader())));
         this.strIngredient2 = ((String) in.readValue((String.class.getClassLoader())));
         this.strIngredient3 = ((String) in.readValue((String.class.getClassLoader())));
@@ -192,9 +204,10 @@ public class Meal implements Parcelable {
     }
 
     @Ignore
-    public Meal(String idMeal, String strMeal, String strDrinkAlternate, String strCategory,
-                String strArea, String strInstructions, String strMealThumb, String strTags,
-                String strYoutube, String strIngredient1, String strIngredient2,
+    public Meal(String idMeal, String idIngredient, String strMeal, String strDescription,
+                String strType, String strDrinkAlternate, String strCategory, String strArea,
+                String strInstructions, String strMealThumb, String strTags, String strYoutube,
+                String strIngredient, String strIngredient1, String strIngredient2,
                 String strIngredient3, String strIngredient4, String strIngredient5,
                 String strIngredient6, String strIngredient7, String strIngredient8,
                 String strIngredient9, String strIngredient10, String strIngredient11,
@@ -209,7 +222,10 @@ public class Meal implements Parcelable {
                 String strSource, String strImageSource, String strCreativeCommonsConfirmed) {
         super();
         this.idMeal = idMeal;
+        this.idIngredient = idIngredient;
         this.strMeal = strMeal;
+        this.strDescription = strDescription;
+        this.strType = strType;
         this.strDrinkAlternate = strDrinkAlternate;
         this.strCategory = strCategory;
         this.strArea = strArea;
@@ -217,6 +233,7 @@ public class Meal implements Parcelable {
         this.strMealThumb = strMealThumb;
         this.strTags = strTags;
         this.strYoutube = strYoutube;
+        this.strIngredient = strIngredient;
         this.strIngredient1 = strIngredient1;
         this.strIngredient2 = strIngredient2;
         this.strIngredient3 = strIngredient3;
@@ -270,12 +287,36 @@ public class Meal implements Parcelable {
         this.idMeal = idMeal;
     }
 
+    public String getIdIngredient() {
+        return idIngredient;
+    }
+
+    public void setIdIngredient(String idIngredient) {
+        this.idIngredient = idIngredient;
+    }
+
     public String getStrMeal() {
         return strMeal;
     }
 
     public void setStrMeal(String strMeal) {
         this.strMeal = strMeal;
+    }
+
+    public String getStrDescription() {
+        return strDescription;
+    }
+
+    public void setStrDescription(String strDescription) {
+        this.strDescription = strDescription;
+    }
+
+    public String getStrType() {
+        return strType;
+    }
+
+    public void setStrType(String strType) {
+        this.strType = strType;
     }
 
     public String getStrDrinkAlternate() {
@@ -332,6 +373,14 @@ public class Meal implements Parcelable {
 
     public void setStrYoutube(String strYoutube) {
         this.strYoutube = strYoutube;
+    }
+
+    public String getStrIngredient() {
+        return strIngredient;
+    }
+
+    public void setStrIngredient(String strIngredient) {
+        this.strIngredient = strIngredient;
     }
 
     public String getStrIngredient1() {
@@ -681,7 +730,10 @@ public class Meal implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(idMeal);
+        dest.writeValue(idIngredient);
         dest.writeValue(strMeal);
+        dest.writeValue(strDescription);
+        dest.writeValue(strType);
         dest.writeValue(strDrinkAlternate);
         dest.writeValue(strCategory);
         dest.writeValue(strArea);
@@ -689,6 +741,7 @@ public class Meal implements Parcelable {
         dest.writeValue(strMealThumb);
         dest.writeValue(strTags);
         dest.writeValue(strYoutube);
+        dest.writeValue(strIngredient);
         dest.writeValue(strIngredient1);
         dest.writeValue(strIngredient2);
         dest.writeValue(strIngredient3);
@@ -737,225 +790,5 @@ public class Meal implements Parcelable {
     @Override
     public int describeContents() {
         return 0;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(Meal.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("idMeal");
-        sb.append('=');
-        sb.append(((this.idMeal == null) ? "<null>" : this.idMeal));
-        sb.append(',');
-        sb.append("strMeal");
-        sb.append('=');
-        sb.append(((this.strMeal == null) ? "<null>" : this.strMeal));
-        sb.append(',');
-        sb.append("strDrinkAlternate");
-        sb.append('=');
-        sb.append(((this.strDrinkAlternate == null) ? "<null>" : this.strDrinkAlternate));
-        sb.append(',');
-        sb.append("strCategory");
-        sb.append('=');
-        sb.append(((this.strCategory == null) ? "<null>" : this.strCategory));
-        sb.append(',');
-        sb.append("strArea");
-        sb.append('=');
-        sb.append(((this.strArea == null) ? "<null>" : this.strArea));
-        sb.append(',');
-        sb.append("strInstructions");
-        sb.append('=');
-        sb.append(((this.strInstructions == null) ? "<null>" : this.strInstructions));
-        sb.append(',');
-        sb.append("strMealThumb");
-        sb.append('=');
-        sb.append(((this.strMealThumb == null) ? "<null>" : this.strMealThumb));
-        sb.append(',');
-        sb.append("strTags");
-        sb.append('=');
-        sb.append(((this.strTags == null) ? "<null>" : this.strTags));
-        sb.append(',');
-        sb.append("strYoutube");
-        sb.append('=');
-        sb.append(((this.strYoutube == null) ? "<null>" : this.strYoutube));
-        sb.append(',');
-        sb.append("strIngredient1");
-        sb.append('=');
-        sb.append(((this.strIngredient1 == null) ? "<null>" : this.strIngredient1));
-        sb.append(',');
-        sb.append("strIngredient2");
-        sb.append('=');
-        sb.append(((this.strIngredient2 == null) ? "<null>" : this.strIngredient2));
-        sb.append(',');
-        sb.append("strIngredient3");
-        sb.append('=');
-        sb.append(((this.strIngredient3 == null) ? "<null>" : this.strIngredient3));
-        sb.append(',');
-        sb.append("strIngredient4");
-        sb.append('=');
-        sb.append(((this.strIngredient4 == null) ? "<null>" : this.strIngredient4));
-        sb.append(',');
-        sb.append("strIngredient5");
-        sb.append('=');
-        sb.append(((this.strIngredient5 == null) ? "<null>" : this.strIngredient5));
-        sb.append(',');
-        sb.append("strIngredient6");
-        sb.append('=');
-        sb.append(((this.strIngredient6 == null) ? "<null>" : this.strIngredient6));
-        sb.append(',');
-        sb.append("strIngredient7");
-        sb.append('=');
-        sb.append(((this.strIngredient7 == null) ? "<null>" : this.strIngredient7));
-        sb.append(',');
-        sb.append("strIngredient8");
-        sb.append('=');
-        sb.append(((this.strIngredient8 == null) ? "<null>" : this.strIngredient8));
-        sb.append(',');
-        sb.append("strIngredient9");
-        sb.append('=');
-        sb.append(((this.strIngredient9 == null) ? "<null>" : this.strIngredient9));
-        sb.append(',');
-        sb.append("strIngredient10");
-        sb.append('=');
-        sb.append(((this.strIngredient10 == null) ? "<null>" : this.strIngredient10));
-        sb.append(',');
-        sb.append("strIngredient11");
-        sb.append('=');
-        sb.append(((this.strIngredient11 == null) ? "<null>" : this.strIngredient11));
-        sb.append(',');
-        sb.append("strIngredient12");
-        sb.append('=');
-        sb.append(((this.strIngredient12 == null) ? "<null>" : this.strIngredient12));
-        sb.append(',');
-        sb.append("strIngredient13");
-        sb.append('=');
-        sb.append(((this.strIngredient13 == null) ? "<null>" : this.strIngredient13));
-        sb.append(',');
-        sb.append("strIngredient14");
-        sb.append('=');
-        sb.append(((this.strIngredient14 == null) ? "<null>" : this.strIngredient14));
-        sb.append(',');
-        sb.append("strIngredient15");
-        sb.append('=');
-        sb.append(((this.strIngredient15 == null) ? "<null>" : this.strIngredient15));
-        sb.append(',');
-        sb.append("strIngredient16");
-        sb.append('=');
-        sb.append(((this.strIngredient16 == null) ? "<null>" : this.strIngredient16));
-        sb.append(',');
-        sb.append("strIngredient17");
-        sb.append('=');
-        sb.append(((this.strIngredient17 == null) ? "<null>" : this.strIngredient17));
-        sb.append(',');
-        sb.append("strIngredient18");
-        sb.append('=');
-        sb.append(((this.strIngredient18 == null) ? "<null>" : this.strIngredient18));
-        sb.append(',');
-        sb.append("strIngredient19");
-        sb.append('=');
-        sb.append(((this.strIngredient19 == null) ? "<null>" : this.strIngredient19));
-        sb.append(',');
-        sb.append("strIngredient20");
-        sb.append('=');
-        sb.append(((this.strIngredient20 == null) ? "<null>" : this.strIngredient20));
-        sb.append(',');
-        sb.append("strMeasure1");
-        sb.append('=');
-        sb.append(((this.strMeasure1 == null) ? "<null>" : this.strMeasure1));
-        sb.append(',');
-        sb.append("strMeasure2");
-        sb.append('=');
-        sb.append(((this.strMeasure2 == null) ? "<null>" : this.strMeasure2));
-        sb.append(',');
-        sb.append("strMeasure3");
-        sb.append('=');
-        sb.append(((this.strMeasure3 == null) ? "<null>" : this.strMeasure3));
-        sb.append(',');
-        sb.append("strMeasure4");
-        sb.append('=');
-        sb.append(((this.strMeasure4 == null) ? "<null>" : this.strMeasure4));
-        sb.append(',');
-        sb.append("strMeasure5");
-        sb.append('=');
-        sb.append(((this.strMeasure5 == null) ? "<null>" : this.strMeasure5));
-        sb.append(',');
-        sb.append("strMeasure6");
-        sb.append('=');
-        sb.append(((this.strMeasure6 == null) ? "<null>" : this.strMeasure6));
-        sb.append(',');
-        sb.append("strMeasure7");
-        sb.append('=');
-        sb.append(((this.strMeasure7 == null) ? "<null>" : this.strMeasure7));
-        sb.append(',');
-        sb.append("strMeasure8");
-        sb.append('=');
-        sb.append(((this.strMeasure8 == null) ? "<null>" : this.strMeasure8));
-        sb.append(',');
-        sb.append("strMeasure9");
-        sb.append('=');
-        sb.append(((this.strMeasure9 == null) ? "<null>" : this.strMeasure9));
-        sb.append(',');
-        sb.append("strMeasure10");
-        sb.append('=');
-        sb.append(((this.strMeasure10 == null) ? "<null>" : this.strMeasure10));
-        sb.append(',');
-        sb.append("strMeasure11");
-        sb.append('=');
-        sb.append(((this.strMeasure11 == null) ? "<null>" : this.strMeasure11));
-        sb.append(',');
-        sb.append("strMeasure12");
-        sb.append('=');
-        sb.append(((this.strMeasure12 == null) ? "<null>" : this.strMeasure12));
-        sb.append(',');
-        sb.append("strMeasure13");
-        sb.append('=');
-        sb.append(((this.strMeasure13 == null) ? "<null>" : this.strMeasure13));
-        sb.append(',');
-        sb.append("strMeasure14");
-        sb.append('=');
-        sb.append(((this.strMeasure14 == null) ? "<null>" : this.strMeasure14));
-        sb.append(',');
-        sb.append("strMeasure15");
-        sb.append('=');
-        sb.append(((this.strMeasure15 == null) ? "<null>" : this.strMeasure15));
-        sb.append(',');
-        sb.append("strMeasure16");
-        sb.append('=');
-        sb.append(((this.strMeasure16 == null) ? "<null>" : this.strMeasure16));
-        sb.append(',');
-        sb.append("strMeasure17");
-        sb.append('=');
-        sb.append(((this.strMeasure17 == null) ? "<null>" : this.strMeasure17));
-        sb.append(',');
-        sb.append("strMeasure18");
-        sb.append('=');
-        sb.append(((this.strMeasure18 == null) ? "<null>" : this.strMeasure18));
-        sb.append(',');
-        sb.append("strMeasure19");
-        sb.append('=');
-        sb.append(((this.strMeasure19 == null) ? "<null>" : this.strMeasure19));
-        sb.append(',');
-        sb.append("strMeasure20");
-        sb.append('=');
-        sb.append(((this.strMeasure20 == null) ? "<null>" : this.strMeasure20));
-        sb.append(',');
-        sb.append("strSource");
-        sb.append('=');
-        sb.append(((this.strSource == null) ? "<null>" : this.strSource));
-        sb.append(',');
-        sb.append("strImageSource");
-        sb.append('=');
-        sb.append(((this.strImageSource == null) ? "<null>" : this.strImageSource));
-        sb.append(',');
-        sb.append("strCreativeCommonsConfirmed");
-        sb.append('=');
-        sb.append(((this.strCreativeCommonsConfirmed == null) ? "<null>" : this.strCreativeCommonsConfirmed));
-        sb.append(',');
-        if (sb.charAt((sb.length() - 1)) == ',') {
-            sb.setCharAt((sb.length() - 1), ']');
-        } else {
-            sb.append(']');
-        }
-        return sb.toString();
     }
 }

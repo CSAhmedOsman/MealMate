@@ -11,17 +11,19 @@ import com.alharbi.mealmate.model.Meal;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Flowable;
+
 @Dao
 public interface MealDAO {
 
     @Query("SELECT * FROM meal")
-    LiveData<List<Meal>> getMeals();
+    Flowable<List<Meal>> getMeals();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    public void insertMeal(Meal meal);
+    public Completable insertMeal(Meal meal);
 
     @Delete
-    public void deleteMeal(Meal meal);
-
+    public Completable deleteMeal(Meal meal);
 
 }

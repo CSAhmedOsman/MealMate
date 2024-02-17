@@ -11,6 +11,7 @@ import com.alharbi.mealmate.R;
 import com.alharbi.mealmate.database.MealLocalDataSourceImp;
 import com.alharbi.mealmate.model.MealRepositoryImp;
 import com.alharbi.mealmate.network.MealRemoteDataSourceImp;
+import com.alharbi.mealmate.ui.authenticate.view.AuthenticateActivity;
 import com.alharbi.mealmate.ui.demo.presenter.DemoPresenter;
 import com.alharbi.mealmate.ui.splash.view.SplashActivity;
 
