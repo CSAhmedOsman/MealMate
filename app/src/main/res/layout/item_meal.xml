@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="8dp">
+
+
+    <ImageView
+        android:id="@+id/imageMeal"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/meal_image"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/auth_image" />
+
+    <TextView
+        android:id="@+id/tvMealName"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom|center"
+        android:background="@drawable/gradient_up_shape"
+        android:gravity="bottom|center"
+        android:textColor="@color/orange_yellow"
+        android:textSize="24sp"
+        tools:text="MealName" />
+
+</androidx.cardview.widget.CardView>

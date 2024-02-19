@@ -11,13 +11,14 @@ import com.alharbi.mealmate.R;
 
 public class AuthenticateActivity extends AppCompatActivity {
 
-    NavController navController;
+    private NavController navController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authenticate);
 
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_auth_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController);
 
     }

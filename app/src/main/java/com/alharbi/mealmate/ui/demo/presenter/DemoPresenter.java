@@ -2,9 +2,8 @@ package com.alharbi.mealmate.ui.demo.presenter;
 
 import com.alharbi.mealmate.model.MealRepository;
 import com.alharbi.mealmate.model.Utils;
-import com.alharbi.mealmate.network.NetworkCallBack;
+import com.alharbi.mealmate.datasource.network.NetworkCallBack;
 import com.alharbi.mealmate.ui.demo.view.DemoActivity;
-import com.alharbi.mealmate.ui.splash.view.SplashActivity;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class DemoPresenter implements NetworkCallBack {
     }
 
     @Override
-    public void onSuccessResult(List result) {
+    public void onSuccessResult(List result, int type) {
         view.showData(result);
     }
 

@@ -13,7 +13,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.alharbi.mealmate.R;
 import com.alharbi.mealmate.model.Utils;
 import com.alharbi.mealmate.ui.authenticate.view.AuthenticateActivity;
-import com.alharbi.mealmate.ui.home.view.HomeActivity;
+import com.alharbi.mealmate.ui.home.HomeActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

@@ -1,4 +1,4 @@
-package com.alharbi.mealmate.network;
+package com.alharbi.mealmate.datasource.network;
 
 import com.alharbi.mealmate.model.MealResponse;
 

@@ -127,7 +127,6 @@
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/btnSingin"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPasswordSingUp"
         tools:visibility="visible" />

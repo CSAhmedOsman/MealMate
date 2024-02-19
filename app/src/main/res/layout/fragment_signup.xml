@@ -122,19 +122,19 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="4dp"
         android:text="@string/action_sign_in"
-        app:layout_constraintBottom_toTopOf="@id/btnNotSignup"
+        app:layout_constraintBottom_toTopOf="@id/btnNotSignin"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutConfirmPassword" />
 
     <Button
-        android:id="@+id/btnNotSignup"
+        android:id="@+id/btnNotSignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="32dp"
         android:backgroundTint="@color/transparent"
-        android:text="@string/n_a_sign_up"
+        android:text="@string/a_a_sign_in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -148,7 +148,6 @@
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/btnSingUp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutConfirmPassword"
         tools:visibility="visible" />

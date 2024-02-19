@@ -1,4 +1,4 @@
-package com.alharbi.mealmate.database;
+package com.alharbi.mealmate.datasource.database;
 
 import android.content.Context;
 

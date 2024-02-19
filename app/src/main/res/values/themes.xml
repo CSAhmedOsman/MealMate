@@ -9,14 +9,7 @@
         <item name="colorSecondary">@color/light_gray</item>
         <item name="colorSecondaryVariant">@color/taupe</item>
         <item name="colorOnSecondary">@color/dark_brown</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/orange</item>
         <!-- Customize your theme here. -->
-    </style>
-
-    <style name="Theme.MealMate.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme.MealMate" parent="Base.Theme.MealMate" />

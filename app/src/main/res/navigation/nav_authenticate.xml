@@ -7,6 +7,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.alharbi.mealmate.ui.authenticate.view.LoginFragment"
+        android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_signupFragment"
@@ -15,6 +16,7 @@
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.alharbi.mealmate.ui.authenticate.view.SignupFragment"
+        android:label="SignUp"
         tools:layout="@layout/fragment_signup">
         <action
             android:id="@+id/action_signupFragment_to_loginFragment"

@@ -1,4 +1,4 @@
-package com.alharbi.mealmate.database;
+package com.alharbi.mealmate.datasource.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

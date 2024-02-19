@@ -1,8 +1,6 @@
-package com.alharbi.mealmate.database;
+package com.alharbi.mealmate.datasource.database;
 
 import android.content.Context;
-
-import androidx.lifecycle.LiveData;
 
 import com.alharbi.mealmate.model.Meal;
 

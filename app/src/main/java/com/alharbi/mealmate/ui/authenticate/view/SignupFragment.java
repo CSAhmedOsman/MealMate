@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.alharbi.mealmate.R;
 import com.alharbi.mealmate.model.Utils;
@@ -28,6 +30,7 @@ public class SignupFragment extends Fragment {
     private TextInputEditText passwordSignUp;
     private TextInputEditText confirmPassword;
     private Button btnSignin;
+    private Button btnNotSignin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class SignupFragment extends Fragment {
         confirmPassword = view.findViewById(R.id.confirmPassword);
         loadingSingUp = view.findViewById(R.id.loadingSignUp);
         btnSignin = view.findViewById(R.id.btnSingUp);
+        btnNotSignin = view.findViewById(R.id.btnNotSignin);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -63,6 +67,10 @@ public class SignupFragment extends Fragment {
             createAccount(email, pass);
         });
 
+        btnNotSignin.setOnClickListener(v -> {
+            NavDirections navDirections = SignupFragmentDirections.actionSignupFragmentToLoginFragment();
+            NavHostFragment.findNavController(this).navigate(navDirections);
+        });
     }
 
     @Override

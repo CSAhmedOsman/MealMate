@@ -1,4 +1,4 @@
-package com.alharbi.mealmate.network;
+package com.alharbi.mealmate.datasource.network;
 
 import android.util.Log;
 
@@ -41,9 +41,9 @@ public class MealRemoteDataSourceImp implements MealRemoteDataSource {
                     MealResponse mealResponse = response.body();
                     if (mealResponse != null) {
                         if (callType == Utils.GET_ALL_CATEGORIES)
-                            networkDelegate.onSuccessResult(mealResponse.getCategories());
+                            networkDelegate.onSuccessResult(mealResponse.getCategories(), Utils.CATEGORY_TYPE);
                         else
-                            networkDelegate.onSuccessResult(mealResponse.getMeals());
+                            networkDelegate.onSuccessResult(mealResponse.getMeals(), Utils.MEAL_TYPE);
                     }
                 }
             }

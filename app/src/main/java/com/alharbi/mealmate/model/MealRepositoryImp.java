@@ -1,10 +1,8 @@
 package com.alharbi.mealmate.model;
 
-import androidx.lifecycle.LiveData;
-
-import com.alharbi.mealmate.database.MealLocalDataSource;
-import com.alharbi.mealmate.network.MealRemoteDataSource;
-import com.alharbi.mealmate.network.NetworkCallBack;
+import com.alharbi.mealmate.datasource.database.MealLocalDataSource;
+import com.alharbi.mealmate.datasource.network.MealRemoteDataSource;
+import com.alharbi.mealmate.datasource.network.NetworkCallBack;
 
 import java.util.List;
 

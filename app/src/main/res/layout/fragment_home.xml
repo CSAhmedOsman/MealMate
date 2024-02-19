@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_shape"
+    tools:context=".ui.home.start.view.HomeFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategories"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:circularflow_defaultRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvShowCategory" />
+
+    <TextView
+        android:id="@+id/tvToDayMeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/to_day_mreal"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/toDayMeal"
+        app:layout_constraintStart_toStartOf="@+id/toDayMeal"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/toDayMeal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvToDayMeal">
+
+        <ImageView
+            android:id="@+id/imageMeal"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/meal_image"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/auth_image" />
+
+        <TextView
+            android:id="@+id/tvMealName"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom|center"
+            android:background="@drawable/gradient_up_shape"
+            android:gravity="bottom|center"
+            android:textColor="@color/orange_yellow"
+            android:textSize="24sp"
+            tools:text="MealName" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvShowCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/categories"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/toDayMeal"
+        app:layout_constraintStart_toStartOf="@+id/toDayMeal"
+        app:layout_constraintTop_toBottomOf="@+id/toDayMeal" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.mealdetails.view.MealDetailsActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageMealD"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:contentDescription="@string/meal_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/auth_image" />
+
+        <TextView
+            android:id="@+id/tvAreaD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/tvCategoryD"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/rvIngredientsD"
+            app:layout_constraintTop_toTopOf="@+id/tvCategoryD"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvCategoryD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/rvIngredientsD"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvAreaD"
+            app:layout_constraintTop_toBottomOf="@+id/imageMealD"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvMealNameD"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:background="@drawable/gradient_up_shape"
+            android:gravity="bottom|center"
+            android:textColor="@color/orange_yellow"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageMealD"
+            app:layout_constraintEnd_toEndOf="@+id/imageMealD"
+            app:layout_constraintStart_toStartOf="@+id/imageMealD"
+            tools:text="tvMealName" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvIngredientsD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAreaD" />
+
+        <TextView
+            android:id="@+id/tvInstructionD"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:textDirection="ltr"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@+id/rvIngredientsD"
+            app:layout_constraintStart_toStartOf="@+id/rvIngredientsD"
+            app:layout_constraintTop_toBottomOf="@+id/rvIngredientsD"
+            tools:text="tvDescription" />
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtubeMealD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvInstructionD" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
