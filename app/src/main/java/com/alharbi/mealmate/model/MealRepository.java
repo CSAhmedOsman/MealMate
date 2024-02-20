@@ -9,4 +9,6 @@ public interface MealRepository {
     void deleteMeal(NetworkCallBack callBack, Meal meal);
 
     void getData(NetworkCallBack callBack, int callType, String data);
+
+    void deleteMeals(NetworkCallBack callBack);
 }

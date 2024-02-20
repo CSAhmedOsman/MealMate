@@ -46,4 +46,9 @@ public class MealLocalDataSourceImp implements MealLocalDataSource {
     public Flowable<List<Meal>> getMeal(String idMeal) {
         return dao.getMeal(idMeal).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
+
+    @Override
+    public Completable deleteAll() {
+        return dao.deleteAllMeals().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
 }

@@ -28,7 +28,7 @@ public class DemoActivity extends AppCompatActivity {
         Button btn = findViewById(R.id.button);
         Intent view = new Intent(this, AuthenticateActivity.class);
         view.putExtra(Utils.MEAL_ID,"52772");
-        view.putExtra(Utils.TYPE_MEAL_DETAILS,Utils.REMOTE_TYPE);
+        view.putExtra(Utils.TYPE_MEAL_DETAILS,Utils.LOOKUP_MEAL_BY_ID);
 
         btn.setOnClickListener(v -> {
             startActivity(view);

@@ -16,4 +16,6 @@ public interface MealLocalDataSource {
     Flowable<List<Meal>> getMeals();
 
     Flowable<List<Meal>> getMeal(String idMeal);
+
+    Completable deleteAll();
 }

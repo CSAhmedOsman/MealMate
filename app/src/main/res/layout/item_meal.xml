@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         android:contentDescription="@string/meal_image"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/auth_image" />
+        app:srcCompat="@drawable/lost_connection" />
 
     <TextView
         android:id="@+id/tvMealName"

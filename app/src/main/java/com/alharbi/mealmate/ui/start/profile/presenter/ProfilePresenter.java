@@ -1,25 +1,30 @@
-package com.alharbi.mealmate.ui.mealdetails.presenter;
+package com.alharbi.mealmate.ui.start.profile.presenter;
 
 import com.alharbi.mealmate.datasource.network.NetworkCallBack;
-import com.alharbi.mealmate.model.Meal;
 import com.alharbi.mealmate.model.MealRepository;
-import com.alharbi.mealmate.model.Utils;
-import com.alharbi.mealmate.ui.mealdetails.view.MealDetailsActivity;
+import com.alharbi.mealmate.ui.start.profile.view.ProfileFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-public class MealDetailsPresenter implements NetworkCallBack {
+public class ProfilePresenter implements NetworkCallBack {
 
-    private MealDetailsActivity view;
+    private ProfileFragment view;
     private MealRepository repository;
     private FirebaseAuth mAuth;
+    FirebaseUser currentUser;
 
-    public MealDetailsPresenter(MealDetailsActivity view, MealRepository repository) {
+    public ProfilePresenter(ProfileFragment view, MealRepository repository) {
         this.view = view;
         this.repository = repository;
         mAuth = FirebaseAuth.getInstance();
+        isSignIn();
+    }
+
+    private void isSignIn() {
+        currentUser = mAuth.getCurrentUser();
+        view.updateUi(currentUser);
     }
 
     public void getData(int type, String idMeal) {
@@ -28,7 +33,6 @@ public class MealDetailsPresenter implements NetworkCallBack {
 
     @Override
     public void onSuccessResult(List result, int type) {
-        view.showData((Meal) result.get(0));
     }
 
     @Override
@@ -41,16 +45,11 @@ public class MealDetailsPresenter implements NetworkCallBack {
         view.showError(errorMsg);
     }
 
-    public void changeData(Meal meal, int type) {
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+    public void signOut() {
         if (currentUser != null) {
-            if (type == Utils.INSERT)
-                repository.insertMeal(this, meal);
-            else if (type == Utils.DELETE) {
-                repository.deleteMeal(this, meal);
-            }
-        } else {
-            onFailure("You have to SingIn First");
+            mAuth.signOut();
+            repository.deleteMeals(this);
+            view.getActivity().recreate();
         }
     }
 }

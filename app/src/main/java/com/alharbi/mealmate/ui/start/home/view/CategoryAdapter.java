@@ -54,7 +54,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
             holder.view.setOnClickListener(v -> {
                 Intent view = new Intent(context, SearchResultActivity.class);
-                view.putExtra(Utils.CATEGORY, category.getStrCategory());
+                view.putExtra(Utils.FILTER_TYPE, Utils.FILTER_BY_CATEGORY);
+                view.putExtra(Utils.FILTER_DATA, category.getStrCategory());
                 context.startActivity(view);
             });
 

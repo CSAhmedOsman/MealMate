@@ -49,9 +49,10 @@ public class SearchResultActivity extends AppCompatActivity {
         rvSearchResult.setAdapter(resultAdapter);
 
         Intent intent = getIntent();
-        String category = intent.getStringExtra(Utils.CATEGORY);
+        int type = intent.getIntExtra(Utils.FILTER_TYPE, Utils.NA);
+        String data = intent.getStringExtra(Utils.FILTER_DATA);
 
-        presenter.getData(Utils.FILTER_BY_CATEGORY, category);
+        presenter.getData(type, data);
     }
 
     public void showMeals(List<Meal> result) {

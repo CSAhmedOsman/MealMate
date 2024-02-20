@@ -44,7 +44,7 @@ public class MealRepositoryImp implements MealRepository {
 
     @Override
     public void getData(NetworkCallBack callBack, int callType, String data) {
-        if (callType == Utils.LOCAL_TYPE) {
+        if (callType == Utils.LOCAL_MEAL) {
             localDataSource.getMeal(data).subscribe(
                     meals -> callBack.onSuccessResult(meals, Utils.MEAL_TYPE),
                     throwable -> callBack.onFailure(throwable.getMessage())
@@ -57,5 +57,13 @@ public class MealRepositoryImp implements MealRepository {
         } else {
             remoteDataSource.makeNetworkCall(callBack, callType, data);
         }
+    }
+
+    @Override
+    public void deleteMeals(NetworkCallBack callBack) {
+        localDataSource.deleteAll().subscribe(
+                () -> callBack.onSuccess(),
+                throwable -> callBack.onFailure(throwable.getMessage())
+        );
     }
 }

@@ -65,7 +65,7 @@ public class MealDetailsActivity extends AppCompatActivity {
 
         addFavorites = findViewById(R.id.addFavorites);
         addFavorites.setOnClickListener(v -> {
-            presenter.addFavorite(meal);
+            presenter.changeData(meal, Utils.INSERT);
         });
 
         youtubeMealPlayer = findViewById(R.id.youtubeMealD);
@@ -85,8 +85,14 @@ public class MealDetailsActivity extends AppCompatActivity {
         String idMeal = intent.getStringExtra(Utils.MEAL_ID);
         int type = intent.getIntExtra(Utils.TYPE_MEAL_DETAILS, Utils.NA);
 
-        meal = new Meal();
+        if (type == Utils.LOCAL_MEAL) {
+            addFavorites.setImageResource(R.drawable.favorites_remove);
+            addFavorites.setOnClickListener(v -> {
+                presenter.changeData(meal, Utils.DELETE);
+            });
+        }
 
+        meal = new Meal();
         presenter.getData(type, idMeal);
     }
 
@@ -129,6 +135,7 @@ public class MealDetailsActivity extends AppCompatActivity {
 
     public void showError(String errorMsg) {
         Log.i("TAG", "showError: " + errorMsg);
+        Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show();
     }
 
 }

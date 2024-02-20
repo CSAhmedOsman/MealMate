@@ -116,7 +116,7 @@ public class HomeFragment extends Fragment {
         toDayMealView.setOnClickListener(v -> {
             Intent view = new Intent(getActivity(), MealDetailsActivity.class);
             view.putExtra(Utils.MEAL_ID, toDayMeal.getIdMeal());
-            view.putExtra(Utils.TYPE_MEAL_DETAILS, Utils.REMOTE_TYPE);
+            view.putExtra(Utils.TYPE_MEAL_DETAILS, Utils.LOOKUP_MEAL_BY_ID);
             startActivity(view);
         });
     }

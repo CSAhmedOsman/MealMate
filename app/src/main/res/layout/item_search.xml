@@ -2,29 +2,30 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="8dp"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="16dp"
     app:cardElevation="4dp">
 
     <ImageView
         android:id="@+id/imageSearch"
-        android:layout_width="128dp"
+        android:layout_width="match_parent"
         android:layout_height="128dp"
         android:layout_gravity="center|top"
         android:contentDescription="@string/meal_image"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/auth_image" />
+        app:srcCompat="@drawable/lost_connection" />
 
     <TextView
         android:id="@+id/tvTitleSearch"
-        android:layout_width="128dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
         android:layout_gravity="bottom|center"
-        android:background="@drawable/gradient_shape"
+        android:background="@drawable/gradient_up_shape"
         android:backgroundTint="@color/black"
-        android:gravity="center"
+        android:gravity="center|bottom"
         android:textColor="@color/orange_yellow"
-        android:textSize="16sp"
+        android:textSize="24sp"
         tools:text="TextView" />
 </androidx.cardview.widget.CardView>

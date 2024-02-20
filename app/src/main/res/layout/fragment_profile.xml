@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_shape"
-    tools:context=".ui.start.ProfileFragment">
+    tools:context=".ui.start.profile.view.ProfileFragment">
 
     <ImageView
         android:id="@+id/imageViewProfile"
@@ -58,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/signout"
+        app:layout_constraintEnd_toEndOf="@+id/btnBackup"
         app:layout_constraintStart_toStartOf="@+id/btnBackup"
         app:layout_constraintTop_toBottomOf="@+id/btnBackup" />
 

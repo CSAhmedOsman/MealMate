@@ -56,7 +56,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.MyVi
             holder.view.setOnClickListener(v -> {
                 Intent view = new Intent(context, MealDetailsActivity.class);
                 view.putExtra(Utils.MEAL_ID, meal.getIdMeal());
-                view.putExtra(Utils.TYPE_MEAL_DETAILS, Utils.LOCAL_TYPE);
+                view.putExtra(Utils.TYPE_MEAL_DETAILS, Utils.LOCAL_MEAL);
                 context.startActivity(view);
             });
 

@@ -3,6 +3,11 @@ package com.alharbi.mealmate.model;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -46,15 +51,17 @@ public class Utils {
     //------------------------------------
     public static final int MEAL_TYPE = 14;
     public static final int CATEGORY_TYPE = 15;
-    public static final int LOCAL_TYPE = 16;
-    public static final int REMOTE_TYPE = 17;
-    public static final int LOCAL_MEALS_TYPE = 18;
+    public static final int LOCAL_MEAL = 16;
+    public static final int LOCAL_MEALS_TYPE = 17;
+    public static final int INSERT = 18;
+    public static final int DELETE = 19;
 
     //------------------------------------
     public static final String MEAL_ID = "idMeal";
     public static final String TYPE_MEAL_DETAILS = "details_type";
     public static final String TO_DAY_MEAL = "to_day_meal";
-    public static final String CATEGORY = "category";
+    public static final String FILTER_TYPE = "filter";
+    public static final String FILTER_DATA = "filtrate";
 
     //-----------------------------------------
 
@@ -335,4 +342,15 @@ public class Utils {
         }
     }
 
+    public static Drawable getDrawableFromEmoji(String emoji, View itemView) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setTextSize(200); // Adjust text size as needed
+        paint.setTextAlign(Paint.Align.LEFT);
+        int width = (int) paint.measureText(emoji);
+        int height = (int) (-paint.ascent() + paint.descent());
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        canvas.drawText(emoji, 0, -paint.ascent(), paint);
+        return new BitmapDrawable(itemView.getResources(), bitmap);
+    }
 }

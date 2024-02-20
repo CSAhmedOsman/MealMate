@@ -54,7 +54,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.MyViewHold
             holder.view.setOnClickListener(v -> {
                 Intent view = new Intent(context, MealDetailsActivity.class);
                 view.putExtra(Utils.MEAL_ID, meal.getIdMeal());
-                view.putExtra(Utils.TYPE_MEAL_DETAILS, Utils.REMOTE_TYPE);
+                view.putExtra(Utils.TYPE_MEAL_DETAILS, Utils.LOOKUP_MEAL_BY_ID);
                 context.startActivity(view);
             });
 

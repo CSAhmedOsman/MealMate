@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/to_day_mreal"
+        android:text="@string/to_day_meal"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/toDayMeal"
         app:layout_constraintStart_toStartOf="@+id/toDayMeal"
@@ -48,7 +48,7 @@
             android:layout_gravity="center"
             android:contentDescription="@string/meal_image"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/auth_image" />
+            app:srcCompat="@drawable/lost_connection" />
 
         <TextView
             android:id="@+id/tvMealName"

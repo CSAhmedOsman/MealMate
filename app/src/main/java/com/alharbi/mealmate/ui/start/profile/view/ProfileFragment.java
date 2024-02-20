@@ -1,18 +1,23 @@
-package com.alharbi.mealmate.ui.start;
+package com.alharbi.mealmate.ui.start.profile.view;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.alharbi.mealmate.R;
-import com.google.firebase.auth.FirebaseAuth;
+import com.alharbi.mealmate.datasource.database.MealLocalDataSourceImp;
+import com.alharbi.mealmate.datasource.network.MealRemoteDataSourceImp;
+import com.alharbi.mealmate.model.MealRepositoryImp;
+import com.alharbi.mealmate.ui.start.profile.presenter.ProfilePresenter;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
@@ -21,7 +26,7 @@ public class ProfileFragment extends Fragment {
     private Button btnSignout;
     private TextView textViewUsername;
     private TextView textViewEmail;
-    private FirebaseAuth mAuth;
+    private ProfilePresenter presenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,22 +49,36 @@ public class ProfileFragment extends Fragment {
         btnSignout = view.findViewById(R.id.btnSignout);
         btnBackup = view.findViewById(R.id.btnBackup);
 
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        presenter = new ProfilePresenter(this, MealRepositoryImp.getInstance(
+                MealRemoteDataSourceImp.getInstance(),
+                MealLocalDataSourceImp.getInstance(getContext().getApplicationContext())
+        ));
+    }
+
+    private void backup() {
+
+    }
+
+    public void updateUi(FirebaseUser currentUser) {
         if (currentUser != null) {
             textViewUsername.setText(currentUser.getDisplayName());
             textViewEmail.setText(currentUser.getEmail());
             btnBackup.setOnClickListener(v -> backup());
             btnSignout.setOnClickListener(v -> {
-                mAuth.signOut();
+                presenter.signOut();
             });
         } else {
             btnSignout.setVisibility(View.GONE);
+            btnBackup.setVisibility(View.GONE);
         }
-
     }
 
-    private void backup() {
+    public void showError(String errorMsg) {
+        Log.e("TAG", "showError: " + errorMsg);
+        Toast.makeText(getActivity(), errorMsg, Toast.LENGTH_SHORT).show();
+    }
 
+    public void showToast(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
 }

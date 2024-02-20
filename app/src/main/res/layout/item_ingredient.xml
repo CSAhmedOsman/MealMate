@@ -18,7 +18,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/auth_image" />
+            app:srcCompat="@drawable/lost_connection" />
 
         <TextView
             android:id="@+id/ingredientTitle"
@@ -28,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="@+id/ingredientImage"
             app:layout_constraintStart_toStartOf="@+id/ingredientImage"
             app:layout_constraintTop_toBottomOf="@+id/ingredientImage"
-            tools:text="TextView" />
+            tools:text="Ingredient" />
 
         <TextView
             android:id="@+id/ingredientMeasure"
@@ -37,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="@+id/ingredientImage"
             app:layout_constraintStart_toStartOf="@+id/ingredientImage"
             app:layout_constraintTop_toBottomOf="@+id/ingredientTitle"
-            tools:text="TextView" />
+            tools:text="Measure" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
