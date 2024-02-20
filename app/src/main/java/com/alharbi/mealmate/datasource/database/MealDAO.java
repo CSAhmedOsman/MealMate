@@ -1,6 +1,5 @@
 package com.alharbi.mealmate.datasource.database;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -19,6 +18,9 @@ public interface MealDAO {
 
     @Query("SELECT * FROM meal")
     Flowable<List<Meal>> getMeals();
+
+    @Query("SELECT * FROM meal WHERE idMeal = :idMeal")
+    Flowable<List<Meal>> getMeal(String idMeal);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     public Completable insertMeal(Meal meal);

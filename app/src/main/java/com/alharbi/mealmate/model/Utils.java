@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.alharbi.mealmate.ui.home.HomeActivity;
+import com.alharbi.mealmate.ui.start.HomeActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,20 +39,22 @@ public class Utils {
     public static final int GET_ALL_CATEGORIES = 10;
     public static final int GET_RANDOM_MEAL = 11;
 
+    //----------------------------------------
+    public static final int GO_TO_HOME = 12;
+    public static final int GO_TO_AUTH = 13;
+
     //------------------------------------
-    public static final int LOCAL_TYPE = 12;
-    public static final int REMOTE_TYPE = 13;
     public static final int MEAL_TYPE = 14;
     public static final int CATEGORY_TYPE = 15;
-
-    //----------------------------------------
-    public static final int GO_TO_HOME = 16;
-    public static final int GO_TO_AUTH = 17;
+    public static final int LOCAL_TYPE = 16;
+    public static final int REMOTE_TYPE = 17;
+    public static final int LOCAL_MEALS_TYPE = 18;
 
     //------------------------------------
     public static final String MEAL_ID = "idMeal";
     public static final String TYPE_MEAL_DETAILS = "details_type";
     public static final String TO_DAY_MEAL = "to_day_meal";
+    public static final String CATEGORY = "category";
 
     //-----------------------------------------
 

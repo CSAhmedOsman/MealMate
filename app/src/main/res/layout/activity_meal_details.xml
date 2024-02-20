@@ -26,8 +26,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/tvCategoryD"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/rvIngredientsD"
             app:layout_constraintTop_toTopOf="@+id/tvCategoryD"
             tools:text="TextView" />
@@ -36,10 +34,9 @@
             android:id="@+id/tvCategoryD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/rvIngredientsD"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintBottom_toTopOf="@+id/rvIngredientsD"
+            app:layout_constraintEnd_toStartOf="@+id/addCalendar"
             app:layout_constraintStart_toEndOf="@+id/tvAreaD"
             app:layout_constraintTop_toBottomOf="@+id/imageMealD"
             tools:text="TextView" />
@@ -77,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="@+id/rvIngredientsD"
             app:layout_constraintStart_toStartOf="@+id/rvIngredientsD"
             app:layout_constraintTop_toBottomOf="@+id/rvIngredientsD"
-            tools:text="tvDescription" />
+            tools:text="tvInstruction" />
 
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
             android:id="@+id/youtubeMealD"
@@ -88,6 +85,39 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvInstructionD" />
+
+        <ImageView
+            android:id="@+id/addFavorites"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/rvIngredientsD"
+            app:layout_constraintEnd_toEndOf="@+id/rvIngredientsD"
+            app:layout_constraintTop_toBottomOf="@+id/imageMealD"
+            app:srcCompat="@drawable/favorites_add"
+            android:contentDescription="@string/favorites" />
+
+        <ImageView
+            android:id="@+id/addPlan"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/plans"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/addFavorites"
+            app:layout_constraintEnd_toStartOf="@+id/addFavorites"
+            app:layout_constraintTop_toTopOf="@+id/addFavorites"
+            app:srcCompat="@drawable/plan_add" />
+
+        <ImageView
+            android:id="@+id/addCalendar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/calendar"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/addPlan"
+            app:layout_constraintEnd_toStartOf="@+id/addPlan"
+            app:layout_constraintTop_toTopOf="@+id/addPlan"
+            app:srcCompat="@drawable/diagnosis" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

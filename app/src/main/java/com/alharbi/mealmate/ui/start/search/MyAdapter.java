@@ -1,4 +1,4 @@
-package com.alharbi.mealmate.ui.home.search;
+package com.alharbi.mealmate.ui.start.search;
 
 import android.view.LayoutInflater;
 import android.view.View;

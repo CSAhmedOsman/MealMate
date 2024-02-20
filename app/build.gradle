@@ -32,10 +32,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         // Set Java compatibility options
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 }
 
@@ -57,7 +62,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.7.7'
 
     // Network communication libraries
-    implementation 'com.google.code.gson:gson:2.10'
+    implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
@@ -88,6 +93,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.firebaseui:firebase-ui-auth:8.0.2'
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.android.gms:play-services-auth:21.0.0'
 
     // Youtube Player
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0'

@@ -1,4 +1,4 @@
-package com.alharbi.mealmate.ui.home.start.view;
+package com.alharbi.mealmate.ui.start.home.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +26,7 @@ import com.alharbi.mealmate.model.Category;
 import com.alharbi.mealmate.model.Meal;
 import com.alharbi.mealmate.model.MealRepositoryImp;
 import com.alharbi.mealmate.model.Utils;
-import com.alharbi.mealmate.ui.home.start.presenter.HomePresenter;
+import com.alharbi.mealmate.ui.start.home.presenter.HomePresenter;
 import com.alharbi.mealmate.ui.mealdetails.view.MealDetailsActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;

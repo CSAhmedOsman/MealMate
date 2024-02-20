@@ -5,5 +5,7 @@ import java.util.List;
 public interface NetworkCallBack {
     public void onSuccessResult(List result, int type);
 
+    public void onSuccess();
+
     public void onFailure(String errorMsg);
 }

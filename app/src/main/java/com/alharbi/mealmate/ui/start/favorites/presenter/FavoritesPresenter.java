@@ -1,29 +1,30 @@
-package com.alharbi.mealmate.ui.demo.presenter;
+package com.alharbi.mealmate.ui.start.favorites.presenter;
 
 import com.alharbi.mealmate.datasource.network.NetworkCallBack;
 import com.alharbi.mealmate.model.MealRepository;
 import com.alharbi.mealmate.model.Utils;
-import com.alharbi.mealmate.ui.demo.view.DemoActivity;
+import com.alharbi.mealmate.ui.start.favorites.view.FavoritesFragment;
 
 import java.util.List;
 
-public class DemoPresenter implements NetworkCallBack {
+public class FavoritesPresenter implements NetworkCallBack {
+    FavoritesFragment view;
+    MealRepository repository;
 
-    private DemoActivity view;
-    private MealRepository repository;
-
-    public DemoPresenter(DemoActivity view, MealRepository repository) {
+    public FavoritesPresenter(FavoritesFragment view, MealRepository repository) {
         this.view = view;
         this.repository = repository;
     }
 
+
     public void getData() {
-        repository.getData(this, Utils.LIST_INGREDIENTS, "");
+        repository.getData(this, Utils.LOCAL_MEALS_TYPE, "");
     }
 
     @Override
     public void onSuccessResult(List result, int type) {
-        view.showData(result);
+        if (type == Utils.MEAL_TYPE)
+            view.showMeals(result);
     }
 
     @Override
@@ -35,4 +36,5 @@ public class DemoPresenter implements NetworkCallBack {
     public void onFailure(String errorMsg) {
         view.showError(errorMsg);
     }
+
 }

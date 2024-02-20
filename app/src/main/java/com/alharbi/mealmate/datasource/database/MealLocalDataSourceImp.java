@@ -6,7 +6,10 @@ import com.alharbi.mealmate.model.Meal;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MealLocalDataSourceImp implements MealLocalDataSource {
 
@@ -25,17 +28,22 @@ public class MealLocalDataSourceImp implements MealLocalDataSource {
     }
 
     @Override
-    public void insert(Meal meal) {
-        new Thread(() -> dao.insertMeal(meal)).start();
+    public Completable insert(Meal meal) {
+        return dao.insertMeal(meal).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
-    public void delete(Meal meal) {
-        new Thread(() -> dao.deleteMeal(meal)).start();
+    public Completable delete(Meal meal) {
+        return dao.deleteMeal(meal).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
     public Flowable<List<Meal>> getMeals() {
-        return dao.getMeals();
+        return dao.getMeals().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Flowable<List<Meal>> getMeal(String idMeal) {
+        return dao.getMeal(idMeal).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 }

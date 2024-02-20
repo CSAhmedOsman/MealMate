@@ -3,7 +3,6 @@ package com.alharbi.mealmate.ui.mealdetails.presenter;
 import com.alharbi.mealmate.datasource.network.NetworkCallBack;
 import com.alharbi.mealmate.model.Meal;
 import com.alharbi.mealmate.model.MealRepository;
-import com.alharbi.mealmate.model.Utils;
 import com.alharbi.mealmate.ui.mealdetails.view.MealDetailsActivity;
 
 import java.util.List;
@@ -18,8 +17,8 @@ public class MealDetailsPresenter implements NetworkCallBack {
         this.repository = repository;
     }
 
-    public void getData(int type,String idMeal) {
-        repository.getRemoteData(this, Utils.LOOKUP_MEAL_BY_ID, idMeal);
+    public void getData(int type, String idMeal) {
+        repository.getData(this, type, idMeal);
     }
 
     @Override
@@ -28,7 +27,16 @@ public class MealDetailsPresenter implements NetworkCallBack {
     }
 
     @Override
+    public void onSuccess() {
+        view.showToast("Done");
+    }
+
+    @Override
     public void onFailure(String errorMsg) {
         view.showError(errorMsg);
+    }
+
+    public void addFavorite(Meal meal) {
+        repository.insertMeal(this, meal);
     }
 }

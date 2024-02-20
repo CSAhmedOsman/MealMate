@@ -4,10 +4,6 @@ import com.alharbi.mealmate.datasource.database.MealLocalDataSource;
 import com.alharbi.mealmate.datasource.network.MealRemoteDataSource;
 import com.alharbi.mealmate.datasource.network.NetworkCallBack;
 
-import java.util.List;
-
-import io.reactivex.rxjava3.core.Flowable;
-
 public class MealRepositoryImp implements MealRepository {
 
 
@@ -31,22 +27,35 @@ public class MealRepositoryImp implements MealRepository {
     }
 
     @Override
-    public void insertMeal(Meal meal) {
-        localDataSource.insert(meal);
+    public void insertMeal(NetworkCallBack callBack, Meal meal) {
+        localDataSource.insert(meal).subscribe(
+                () -> callBack.onSuccess(),
+                throwable -> callBack.onFailure(throwable.getMessage())
+        );
     }
 
     @Override
-    public void deleteMeal(Meal meal) {
-        localDataSource.delete(meal);
+    public void deleteMeal(NetworkCallBack callBack, Meal meal) {
+        localDataSource.delete(meal).subscribe(
+                () -> callBack.onSuccess(),
+                throwable -> callBack.onFailure(throwable.getMessage())
+        );
     }
 
     @Override
-    public Flowable<List<Meal>> getLocalMeals() {
-        return localDataSource.getMeals();
-    }
-
-    @Override
-    public void getRemoteData(NetworkCallBack callBack, int callType, String data) {
-        remoteDataSource.makeNetworkCall(callBack, callType, data);
+    public void getData(NetworkCallBack callBack, int callType, String data) {
+        if (callType == Utils.LOCAL_TYPE) {
+            localDataSource.getMeal(data).subscribe(
+                    meals -> callBack.onSuccessResult(meals, Utils.MEAL_TYPE),
+                    throwable -> callBack.onFailure(throwable.getMessage())
+            );
+        } else if (callType == Utils.LOCAL_MEALS_TYPE) {
+            localDataSource.getMeals().subscribe(
+                    meals -> callBack.onSuccessResult(meals, Utils.MEAL_TYPE),
+                    throwable -> callBack.onFailure(throwable.getMessage())
+            );
+        } else {
+            remoteDataSource.makeNetworkCall(callBack, callType, data);
+        }
     }
 }

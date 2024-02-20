@@ -22,20 +22,17 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.alharbi.mealmate.R;
 import com.alharbi.mealmate.model.Utils;
-import com.alharbi.mealmate.ui.home.HomeActivity;
+import com.alharbi.mealmate.ui.start.HomeActivity;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.GetSignInIntentRequest;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -51,8 +48,9 @@ public class AuthFragment extends Fragment {
     private LoginButton btnFacebookLogin;
     private Button btnLoginAccount;
     private Button btnGuest;
-    private FirebaseAuth mAuth;
     private SignInClient signInClient;
+    private FirebaseAuth mAuth;
+    private static final int RC_SIGN_IN = 1001;
     private CallbackManager mCallbackManager;
 
     private final ActivityResultLauncher<IntentSenderRequest> signInLauncher = registerForActivityResult(
@@ -144,6 +142,7 @@ public class AuthFragment extends Fragment {
         Utils.updateUI(currentUser, getActivity());
     }
 
+
     private void handleSignInResult(Intent data) {
         try {
             // Google Sign In was successful, authenticate with Firebase
@@ -192,7 +191,6 @@ public class AuthFragment extends Fragment {
                     Toast.makeText(requireContext(), "Google Sign-in failed: " + e.getMessage(),
                             Toast.LENGTH_SHORT).show();
                 });
-
     }
 
     private void oneTapSignIn() {
@@ -208,18 +206,10 @@ public class AuthFragment extends Fragment {
 
         // Display the One Tap UI
         signInClient.beginSignIn(oneTapRequest)
-                .addOnSuccessListener(new OnSuccessListener<BeginSignInResult>() {
-                    @Override
-                    public void onSuccess(BeginSignInResult beginSignInResult) {
-                        launchSignIn(beginSignInResult.getPendingIntent());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // No saved credentials found. Launch the One Tap sign-up flow, or
-                        // do nothing and continue presenting the signed-out UI.
-                    }
+                .addOnSuccessListener(beginSignInResult -> launchSignIn(beginSignInResult.getPendingIntent()))
+                .addOnFailureListener(e -> {
+                    // No saved credentials found. Launch the One Tap sign-up flow, or
+                    // do nothing and continue presenting the signed-out UI.
                 });
     }
 

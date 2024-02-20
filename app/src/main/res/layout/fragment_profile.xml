@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_shape"
-    tools:context=".ui.home.ProfileFragment">
+    tools:context=".ui.start.ProfileFragment">
 
     <ImageView
         android:id="@+id/imageViewProfile"
@@ -25,27 +25,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:text="@string/guest"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/imageViewProfile"
         app:layout_constraintStart_toStartOf="@+id/imageViewProfile"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewProfile"
-        tools:text="John Doe" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfile" />
 
     <TextView
         android:id="@+id/textViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewUsername"
+        app:layout_constraintStart_toStartOf="@+id/textViewUsername"
         app:layout_constraintTop_toBottomOf="@id/textViewUsername"
         tools:text="Email: john.doe@example.com" />
 
     <Button
-        android:id="@+id/buttonBackup"
+        android:id="@+id/btnBackup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/backup"
+        app:layout_constraintEnd_toEndOf="@+id/textViewEmail"
         app:layout_constraintStart_toStartOf="@+id/textViewEmail"
         app:layout_constraintTop_toBottomOf="@id/textViewEmail" />
+
+    <Button
+        android:id="@+id/btnSignout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/signout"
+        app:layout_constraintStart_toStartOf="@+id/btnBackup"
+        app:layout_constraintTop_toBottomOf="@+id/btnBackup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,9 +20,5 @@
             android:id="@+id/plansFragment"
             android:icon="@drawable/calendar"
             android:title="@string/plans" />
-        <item
-            android:id="@+id/profileFragment"
-            android:icon="@drawable/profile"
-            android:title="@string/profile" />
     </group>
 </menu>

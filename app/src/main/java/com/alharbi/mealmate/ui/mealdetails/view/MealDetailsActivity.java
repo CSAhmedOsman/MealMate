@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +36,11 @@ public class MealDetailsActivity extends AppCompatActivity {
     private YouTubePlayerView youtubeMealPlayer;
     private MealDetailsPresenter presenter;
     private IngredientAdapter ingredientAdapter;
+    private ImageView addPlan;
+    private ImageView addCalendar;
+    private ImageView addFavorites;
+    private Meal meal;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,21 @@ public class MealDetailsActivity extends AppCompatActivity {
         tvCategory = findViewById(R.id.tvCategoryD);
         tvMealName = findViewById(R.id.tvMealNameD);
         tvInstruction = findViewById(R.id.tvInstructionD);
+
+        addPlan = findViewById(R.id.addPlan);
+        addPlan.setOnClickListener(v -> {
+
+        });
+
+        addCalendar = findViewById(R.id.addCalendar);
+        addCalendar.setOnClickListener(v -> {
+
+        });
+
+        addFavorites = findViewById(R.id.addFavorites);
+        addFavorites.setOnClickListener(v -> {
+            presenter.addFavorite(meal);
+        });
 
         youtubeMealPlayer = findViewById(R.id.youtubeMealD);
 
@@ -64,10 +85,13 @@ public class MealDetailsActivity extends AppCompatActivity {
         String idMeal = intent.getStringExtra(Utils.MEAL_ID);
         int type = intent.getIntExtra(Utils.TYPE_MEAL_DETAILS, Utils.NA);
 
+        meal = new Meal();
+
         presenter.getData(type, idMeal);
     }
 
     private void updateUi(Meal meal) {
+        this.meal = meal;
         tvArea.setText(Utils.getFlagEmoji(meal.getStrArea()) + " " + meal.getStrArea());
         tvCategory.setText(meal.getStrCategory());
         tvMealName.setText(meal.getStrMeal());
@@ -93,6 +117,10 @@ public class MealDetailsActivity extends AppCompatActivity {
     private String videoId(String strYoutube) {
         String[] split = strYoutube.trim().split("v=");
         return split.length > 0 ? split[1] : "";
+    }
+
+    public void showToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     public void showData(Meal result) {
